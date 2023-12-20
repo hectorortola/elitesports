@@ -19,8 +19,8 @@ public class TextFileProcessor {
             String htmlContent = parseToHtml(lines);
             saveHtmlToFile(htmlContent, "Alice.html");
 
-        } catch (NoSuchFileException nsfe) {
-            System.err.println("File not found: " + nsfe.getFile());
+        } catch (NoSuchFileException e) {
+            System.err.println("File not found: " + e.getFile());
         } catch (IOException e) {
             System.err.println("An error occurred while processing the file.");
         }
