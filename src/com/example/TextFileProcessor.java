@@ -7,7 +7,7 @@ import java.util.List;
 public class TextFileProcessor {
 
     public static void main(String[] args) {
-        String filePath = "C:\\Users\\hecto\\Desktop\\prueba elite sports\\elitesports\\Alice.txt";
+        String filePath = "tu/ruta/al/Alice.txt";
 
         try {
             List<String> lines = readLinesFromFile(filePath);
