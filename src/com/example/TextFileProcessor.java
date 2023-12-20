@@ -58,7 +58,10 @@ public class TextFileProcessor {
             totalChapters += 1;
             htmlContent.append("</br>");
             htmlContent.append("<h1 id=\"chapter-").append(totalChapters).append("\">").append(line).append("</h1>\n");
-        } else {
+        } else if (line.contains("ALICE'S RIGHT FOOT, ESQ.") || line.contains("HEARTHRUG,") || line.contains("NEAR THE FENDER") || line.contains("(WITH ALICE'S LOVE).")) {
+            int indentationLevel = getIndentationLevel(line);
+            htmlContent.append("<p style=\"text-indent: ").append(indentationLevel * 10).append("px;\">").append(line).append("</p>\n");
+        } else  {
             htmlContent.append("<p>").append(line).append("</p>\n");
         }
         return totalChapters;
@@ -99,5 +102,13 @@ public class TextFileProcessor {
             htmlIndex.append("<li><a href=\"#chapter-").append(totalChapters).append("\">").append(line).append("</a></li>\n");
         }
         return totalChapters;
+    }
+
+    private static int getIndentationLevel(String line) {
+        int indentationLevel = 0;
+        while (indentationLevel < line.length() && line.charAt(indentationLevel) == ' ') {
+            indentationLevel++;
+        }
+        return indentationLevel;
     }
 }
